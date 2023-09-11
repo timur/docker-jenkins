@@ -21,11 +21,11 @@ pipeline {
         sh 'docker compose ps'
       }
     }
-    post {
-      always {
-        sh 'docker compose down -v --remove-orphans'
-        sh 'docker compose ps'
-      }
+  }
+  post {
+    always {
+      sh 'docker compose down -v --remove-orphans'
+      sh 'docker compose ps'
     }
   }
 }
