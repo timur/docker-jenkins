@@ -6,7 +6,7 @@ pipeline {
         sh '''
           docker version
           docker info
-          docker compose version
+          docker compose version 
         '''
       }
     }
@@ -15,7 +15,7 @@ pipeline {
         sh 'docker system prune -a --volumes -f'
       }
     }
-    stage('Start container ') {
+    stage('Start container') {
       steps {
         sh 'docker compose up -d --no-color --wait'
         sh 'docker compose ps'
@@ -24,7 +24,7 @@ pipeline {
   }
   post {
     always {
-      sh 'docker compose down -v --remove-orphans'
+      sh 'docker compose down --remove-orphans -v'
       sh 'docker compose ps'
     }
   }
